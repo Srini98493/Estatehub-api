@@ -1,0 +1,78 @@
+components:
+  schemas:
+    Property:
+      type: object
+      properties:
+        propertyCategory:
+          type: integer
+          description: Property category ID
+        propertyType:
+          type: integer
+          description: Property type ID
+        propertyTitle:
+          type: string
+          description: Title of the property
+        propertyDescription:
+          type: string
+        address:
+          type: string
+        location:
+          type: string
+        landmark:
+          type: string
+        pinCode:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+        availableDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
+        bedRooms:
+          type: integer
+        bathRooms:
+          type: integer
+        amenities:
+          type: string
+        propertyArea:
+          type: string
+        currencyType:
+          type: string
+        price:
+          type: number
+          format: float
+
+    Service:
+      type: object
+      properties:
+        serviceListNo:
+          type: integer
+          description: Service category number
+        postQuery:
+          type: string
+          description: Service query details
+        areaCode:
+          type: string
+        contactNo:
+          type: string
+        email:
+          type: string
+          format: email
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string

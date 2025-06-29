@@ -1,0 +1,166 @@
+paths:
+  /properties:
+    post:
+      summary: Create a new property
+      tags: [Properties]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Property'
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+
+  /properties/{id}/details:
+    get:
+      summary: Get property details
+      tags: [Properties]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+  /properties/search:
+    get:
+      summary: Search properties
+      tags: [Properties]
+      parameters:
+        - in: query
+          name: propertyCategory
+          schema:
+            type: integer
+        - in: query
+          name: propertyType
+          schema:
+            type: integer
+        - in: query
+          name: city
+          schema:
+            type: string
+        - in: query
+          name: minPrice
+          schema:
+            type: number
+        - in: query
+          name: maxPrice
+          schema:
+            type: number
+        - in: query
+          name: minArea
+          schema:
+            type: number
+        - in: query
+          name: minBedrooms
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property'
+
+  /services:
+    post:
+      summary: Create a new service
+      tags: [Services]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+
+    get:
+      summary: Get all services
+      tags: [Services]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+
+  /services/{id}:
+    put:
+      summary: Update a service
+      tags: [Services]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+    get:
+      summary: Get service by ID
+      tags: [Services]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+components:
+  responses:
+    BadRequest:
+      description: Ba
